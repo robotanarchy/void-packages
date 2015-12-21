@@ -5,7 +5,7 @@
 pkgname=wlc-git
 version=20151215
 _githash=cff19178edf33842256b38974d38d978065e419e
-revision=1
+revision=2
 build_style=cmake
 hostmakedepends="cmake pkg-config git perl"
 depends="wayland pixman libxkbcommon eudev-libudev libinput"
@@ -20,5 +20,15 @@ do_fetch() {
 	git clone $homepage $pkgname-$version
 	cd $pkgname-$version
 	git checkout ${_githash}
-	git submodule init && git submodule update	
+	git submodule init && git submodule update
+}
+
+wlc-git-devel_package() {
+	depends="${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove "usr/lib/*.so"
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+	}
 }
