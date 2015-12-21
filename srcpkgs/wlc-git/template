@@ -1,0 +1,24 @@
+# Template file for 'wlc-git'
+# NOTE: Detailed dependencies (which xcb components etc.) can be read
+# 	from CMakeLists.txt!
+
+pkgname=wlc-git
+version=20151215
+_githash=cff19178edf33842256b38974d38d978065e419e
+revision=1
+build_style=cmake
+hostmakedepends="cmake pkg-config git perl"
+depends="wayland pixman libxkbcommon eudev-libudev libinput"
+makedepends="wayland-devel pixman-devel libxkbcommon-devel eudev-libudev-devel libinput-devel libX11-devel libxcb-devel xcb-util-devel xcb-util-wm-devel xcb-util-renderutil-devel xcb-util-keysyms-devel xcb-util-image-devel MesaLib-devel libwayland-egl libdrm-devel libgbm"
+short_desc="Wayland compositor library"
+maintainer="robotanarchy"
+license="MIT"
+homepage="https://github.com/Cloudef/wlc"
+
+
+do_fetch() {
+	git clone $homepage $pkgname-$version
+	cd $pkgname-$version
+	git checkout ${_githash}
+	git submodule init && git submodule update	
+}
