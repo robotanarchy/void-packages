@@ -1,0 +1,25 @@
+# Template file for 'sway-git'
+
+pkgname=sway-git
+version=20151222
+_githash=8a22ac3966047353daffe88dd4b8c2910ef519f5
+revision=3
+build_style=cmake
+hostmakedepends="cmake pkg-config git"
+depends="json-c pcre wlc-git>=20151215_4 wayland libxkbcommon cairo pango gdk-pixbuf pam"
+makedepends="json-c-devel pcre-devel wlc-git-devel wayland-devel libxkbcommon-devel cairo-devel pango-devel gdk-pixbuf-devel pam-devel asciidoc"
+short_desc="i3-compatible window manager for Wayland"
+maintainer="robotanarchy"
+license="MIT"
+homepage="https://github.com/SirCmpwn/sway"
+
+
+do_fetch() {
+	git clone $homepage $pkgname-$version
+	cd $pkgname-$version
+	git checkout ${_githash}
+}
+
+post_install() {
+	chmod u+s ${DESTDIR}/usr/bin/sway
+}
