@@ -284,6 +284,7 @@ libxkbfile.so.1 libxkbfile-1.0.5_1
 libXpm.so.4 libXpm-3.5.7_1
 libXmu.so.6 libXmu-1.0.4_1
 libXmuu.so.1 libXmu-1.0.4_1
+libdrm.so libdrm-2.4.65_3
 libdrm.so.2 libdrm-2.4.65_2
 libdrm_radeon.so.1 libdrm-2.4.65_2
 libdrm_intel.so.1 libdrm-2.4.65_2
